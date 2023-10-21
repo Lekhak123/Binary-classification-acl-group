@@ -15,8 +15,15 @@ export async function POST(request : Request) {
     let author = videoDetails.author;
     const filePath = path.join(process.cwd(), 'public/good.json');
     const jsonData = await fsPromises.readFile(filePath,"utf-8");
-    let objectData = JSON.parse(jsonData);
-    objectData = objectData.filter((video:any) => !(video.id===videoID));
+    let objectData = [];
+    try {
+        objectData = JSON.parse(jsonData);
+    } catch (error) {
+        console.log("good.json empty. Initializing.")
+    }
+    objectData = objectData.filter((video:any) => {
+        return !(video.id===videoID)
+    });
     let newJsondata = {
         title:title,
         videoID:videoID,
