@@ -84,7 +84,8 @@ export default function Home() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            1 of {youtubeJsonData.length}
+            {youtubeJsonData.length} left
+            
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure><img
                     src={youtubeJsonData[0]
