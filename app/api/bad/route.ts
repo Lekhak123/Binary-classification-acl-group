@@ -17,6 +17,7 @@ export async function POST(request : Request) {
     const filePath = path.join(process.cwd(), 'public/bad.json');
     const jsonData = await fsPromises.readFile(filePath,"utf-8");
     let objectData = JSON.parse(jsonData);
+    objectData = objectData.filter((video:any) => !(video.id===videoID));
     let newJsondata = {
         title:title,
         videoID:videoID,

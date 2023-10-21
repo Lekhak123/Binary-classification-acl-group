@@ -18,14 +18,7 @@ export async function GET(request: Request) {
         await fsPromises.writeFile(Completed_filePath,JSON.stringify(newJsondata),"utf-8");
         return NextResponse.json({ message: jsonData }, { status: 200 });
     };
-    let foundindex=0;
-    for(let i =0;i<jsonData?.length;i++){
-        if(jsonData[i].id===videoID){
-            foundindex=i;
-            break;
-        };
-    };
-    jsonData.splice(0,foundindex+2);
-    return  NextResponse.json({ message: jsonData }, { status: 200 });
+    const filteredVideoObjects = jsonData.filter((video:any) => !CompeltedobjectData.includes(video.id));
+    return  NextResponse.json({ message: filteredVideoObjects }, { status: 200 });
 }
 

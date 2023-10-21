@@ -9,7 +9,6 @@ export default function Home() {
 
     const fetchYoutubeData = async() => {
         const staticData = await(await fetch(`api/fetch`, {cache: 'no-store'})).json();
-        console.log(staticData)
         setyoutubeJsonData(staticData
             ?.message);
         youtubeJsonDataRef.current= staticData?.message;
@@ -60,11 +59,9 @@ export default function Home() {
     };
 
     async function handleKeyDown(e : any) {
-        console.log("here")
         if (!(youtubeJsonDataRef.current.length > 0)) {
             return;
         }
-        console.log(youtubeJsonDataRef.current)
         switch (e.key) {
             case "ArrowLeft":
                 handleBad(youtubeJsonDataRef.current[0]);
