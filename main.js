@@ -2,10 +2,11 @@ const ytsr = require('ytsr');
 const fs = require('fs');
 
 const getyoutube = async()=>{
-    const filters1 = await ytsr.getFilters('shiba inu vlog');
+    //Riley and US
+    const filters1 = await ytsr.getFilters('KyloTheDoge');
     const filter1 = filters1.get('Type').get('Video');
     let itemarray =[];
-    let items = await ytsr(filter1.url, { pages: 50000,gl:"US" });
+    let items = await ytsr(filter1.url, { pages: 500000,gl:"GB" });
     itemarray=items.items;
 
     itemarray = itemarray.filter((a)=>{
